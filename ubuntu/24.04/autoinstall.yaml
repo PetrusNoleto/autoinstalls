@@ -1,0 +1,44 @@
+#cloud-config
+autoinstall:
+    version: 1
+    identity:
+        realname: 'User Name'
+        hostname: ubuntu-desktop
+        username: username
+        password: '$Password'
+    locale: pt_BR.utf8
+    keyboard:
+        layout: br
+    timezone: "America/Sao_Paulo"
+    packages:
+        - gdebi
+        - docker
+        - npm
+        - curl
+        - ruby
+        - composer
+        - flatpak
+        - gnome-software-plugin-flatpak
+        - bun
+        - deno
+        - php
+        - git
+        - wget
+    snaps:
+        - name: spotify
+          channel: stable
+          classic: false
+        - name: sublime-text
+          channel: stable
+          classic: true
+        - name: bitwarden
+          channel: stable
+          classic: false  
+    codecs:
+        install: true
+    drivers:
+        install: true
+    updates: all
+    late-commands:
+      - "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash && nvm install 22" 
+    shutdown: reboot
